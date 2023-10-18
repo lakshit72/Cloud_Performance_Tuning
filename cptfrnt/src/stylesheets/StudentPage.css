@@ -1,0 +1,104 @@
+.stdPageWrapper{
+    min-height: 100svh;
+    background-color: var(--secondaryColor);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.contentPage{
+    height: 100vh;
+    width: 78%;
+}
+.userProfile{
+    width: 100%;
+    height: 10%;
+    margin: 0.8rem 0;
+}
+.profileCont{
+    width: 20%;
+    height: 100%;
+    float: right;
+    margin: 0 1rem;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.profileImg{
+    border-radius: 100%;
+    border: 3px solid var(--accentColor);
+    height: 55px;
+    width: 55px;
+    background-color: var(--accentColor);
+    background-blend-mode: multiply;
+    overflow: hidden;
+    object-fit:contain;
+}
+.profileImg img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.profileName{
+    height: 100%;
+    width: 70%;
+    font-size: 2.5vh;
+    color: var(--primaryColor);
+    font-family: "Young Serif";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+}
+.userPosition{
+    color: var(--subtextColor);
+    font-size: 2.2vh;
+}
+
+.userInfoBanner{
+    width: 90%;
+    height: 30%;
+    margin: 1rem 0;
+    background-color: var(--accentColor);
+    border-radius: 5vmin;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    overflow: hidden;
+}
+.bannerGreet{
+    height: 75%;
+    width: 40%;
+    padding: 0 1.5rem;
+    font-family: "Young Serif";
+}
+.bannerImg{
+    height: 100%;
+    width: 40%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.bannerTime{
+    font-size: 2.8vh;
+    color: var(--subtextColor);
+}
+.bannerName{
+    margin: 3.2rem 0 0 0;
+    color: var(--secondaryColor);
+    font-size: 4vh;
+    font-weight: 600;
+}
+.bannerPrompt{
+    font-size: 2.4vh;
+    color: var(--secondaryColor);
+    margin: 0 0.6rem;
+}
+
+.elementCont{
+    width: 92.8%;
+    height: 50%;
+    background-color: aqua;
+}

@@ -1,0 +1,114 @@
+.loginContWrapper{
+    height: 100svh;
+    width: 100%;
+    display: flex;
+    justify-content:flex-start;
+    flex-direction: row;
+}
+
+.loginContentCont{
+    width: 40%;
+    height: 100%;
+    position: relative;
+}
+.loginInpCont{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-40%);
+    height: 50%;
+    width: 72%;
+}
+
+.loginTitle{
+    font-size: 5vh;
+    width: 100%;
+    font-family: "Young Serif";
+    color: var(--secondaryColor);
+
+}
+.loginDesc{
+    width: 100%;
+    font-size: 2.2vh;
+    font-family: "Young Serif";
+    color: var(--subtextColor);
+    margin: 0.3rem 0;
+}
+.loginDeets{
+    margin-top: 2rem;
+    width: 100%;
+}
+.textfeilds{
+    width: 70%;
+    padding: 0.3rem 0.1rem;
+    margin: 0.6rem 0;
+    font-size: 2.2vh;
+    border: none;
+    font-family: "Young Serif";
+    border-bottom: 1px solid var(--subtextColor);
+    background-color: var(--primaryColor);
+    box-sizing: border-box;
+    color: var(--subtextColor);
+    outline: none;
+    transition: all 0.2s;
+}
+.textfeilds:focus{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-bottom: 2px solid var(--accentColor);
+}
+.textfeilds::placeholder{
+    font-family: "Young Serif";
+    color: var(--subtextColor);
+}
+
+.btnClass{
+    width: 70%;
+    color: var(--secondaryColor);
+    border-radius: 1.5vmin;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background:linear-gradient(to right,var(--accentColor) 0%,var(--accentColor) 50%,var(--primaryColor) 50%,var(--primaryColor) 100%);
+    background-size: 200% 100%;
+    font-size: 2.4vh;
+    font-family: "Young Serif";
+    margin: 2rem 0;
+    height: 12%;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+.btnClass:hover{
+    background-position: 100% 0;
+    border: 2px solid var(--accentColor);
+}
+
+
+.loginImgCont{
+    width: 60%;
+    height: 100%;
+    background-color: var(--accentColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+.imgTitlecont{
+    width: 70%;
+    height: 28vh;
+    margin-top: 10vh;
+    color: var(--secondaryColor);
+    font-family: "Young Serif";
+    font-size: 7.6vh;
+}
+.imgTitledesc{
+    font-size: 2vh;
+}
+.imgCont{
+    height: 55vh;
+    width: 65%;
+    background-image: url(../assets/images/img2.png);
+    background-position: center;
+    background-size: cover;
+}

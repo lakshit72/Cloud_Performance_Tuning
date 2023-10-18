@@ -1,0 +1,19 @@
+.navbarCont{
+    height: 10vh;
+    display: flex;
+    border-bottom: 2px solid var(--secondaryColor);
+}
+
+.schoolIcon{
+    color: var(--accentColor);
+    margin-right: 0.65rem;
+}
+.appLogo{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 2.4vh;
+    margin: 0 2rem;
+    font-family: "Young Serif";
+}
