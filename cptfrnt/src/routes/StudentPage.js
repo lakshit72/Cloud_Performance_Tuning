@@ -32,8 +32,8 @@ const StudentPage = () => {
         const months = ["January","Feburary","March","April","May","June","July","August","September","October","November","December"]
 
         setPrf("http://localhost:5000/Users/user1/2.png")
-        setName("Randi")
-        setPos("Rand")
+        setName("Lakshit Joshi")
+        setPos("BTech CSE")
 
         var date = new Date()
         setDate(months[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear())
@@ -70,10 +70,32 @@ const StudentPage = () => {
                 </div>
                 <div className="elementCont">
                     <div className="contentCont">
-                        
+                        <div className="financeCont">
+                            <div className="financeTitle">Finances</div>
+                            <div className="financeElements">
+                                <div className="financeTotal finCont">
+
+                                </div>
+                                <div className="financePaid finCont">
+
+                                </div>
+                                <div className="financeLeft finCont">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className="financeCont">
+                            <div className="financeTitle">Courses</div>
+                            <div className="financeElements">
+                                <div className="">
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className="notifyCont">
-
+                        <div className="notifyTitle">Notification Center</div>
+                        <div className="notifyCenter"></div>
                     </div>
                 </div>
             </div>

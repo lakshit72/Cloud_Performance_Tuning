@@ -6,7 +6,7 @@ import StudentPage from './routes/StudentPage';
 function App() {
   return (
     <>
-      <StudentPage />
+      <LoginPage />
     </>
   );
 }

@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/lakshit72/Cloud_Performance_Tuning#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.2",
     "nodemon": "^3.0.1"
   }

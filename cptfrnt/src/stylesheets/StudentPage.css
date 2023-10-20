@@ -99,6 +99,54 @@
 
 .elementCont{
     width: 92.8%;
+    height: 52%;
+    display: flex;
+    justify-content: space-between;
+}
+.contentCont{
+    width: 70%;
+    height: 100%;
+}
+.notifyCont{
+    width: 28%;
+    height: 100%;
+}
+.notifyTitle{
+    width: 100%;
+    color: var(--primaryColor);
+    font-size: 3vh;
+    font-family: "Young Serif";
+    padding: 1rem 0.5rem;
+}
+.notifyCenter{
+    width: 96%;
+    height: 80%;
+    margin: 0 0.2rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 2vmin;
+}
+
+.financeCont{
+    width: 100%;
     height: 50%;
-    background-color: aqua;
+}
+.financeTitle{
+    width: 100%;
+    font-size: 3vh;
+    color: var(--primaryColor);
+    font-family: "Young Serif";
+    padding: 0.5rem;
+}
+.financeElements{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+.finCont{
+    width: 30%;
+    height: 95%;
+    border-radius: 4vmin;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border: 3px solid var(--accentColor);
 }
