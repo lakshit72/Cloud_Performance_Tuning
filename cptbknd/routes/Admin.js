@@ -6,10 +6,10 @@ const BatchModel = require("../models/Batches")
 const Router = require("express").Router()
 
 Router.post("/Faculty/AddCourse",async (req,res)=>{
-    const id = req.body._id
+    const email = req.body.Email
 
     FacultyModel.findOneAndUpdate({
-        _id:id
+        Email:email
     },{
         $addToSet:{
             "TeachReq":{
@@ -19,11 +19,9 @@ Router.post("/Faculty/AddCourse",async (req,res)=>{
             }
         }
     }).then((resp)=>{
-        console.log(resp.TeachReq)
-        res.status(200).json("less gooo")
+        res.status(200).json(resp)
     }).catch(err=>{
-        console.log(err)
-        res.status(500).json("Noooooo")
+        res.status(500).json(err)
     })
 
 })
@@ -105,6 +103,15 @@ Router.post("/AddBatches", async (req,res)=>{
     }catch(err){
         res.status(500).json(err)
     }
+})
+
+Router.post("/Batches/AddCourse",async (req,res)=>{
+    const CourseName = req.body.CourseName
+    
+    // BatchModel.findOneAndUpdate({
+        
+    // })
+
 })
 
 module.exports = Router

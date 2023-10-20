@@ -7,6 +7,7 @@ const FacultySchema = new mongoose.Schema({
     TeachReq:[{
         Batch:{type:String},
         Year:{type:String},
+        Degree:{type:String},
         Course:{type:String}
     }],
     isAdmin:{type:Boolean,required:true}
