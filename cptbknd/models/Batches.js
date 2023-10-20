@@ -5,7 +5,10 @@ const BatchSchema =  new mongoose.Schema({
     Batch:{type:String,required:true},
     Degree:{type:String,required:true},
     Courses:[{
-        CourseName:{type:String}
+        CourseName:{type:String},
+        Batch:{type:String},
+        Year:{type:String},
+        Degree:{type:String}
     }]
 })
 
