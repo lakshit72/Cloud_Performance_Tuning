@@ -65,7 +65,9 @@ Router.post("/AddStudent",async (req,res)=>{
         Email:req.body.Email,
         Degree:req.body.Degree,
         Batch:req.body.Batch,
-        Year:req.body.Year
+        Year:req.body.Year,
+        TotalTuition:req.body.TotalTuition?req.body.TotalTuition:"0",
+        AdditionalCharges:req.body.AdditionalCharges?req.body.AdditionalCharges:"0"
     })
 
     try{
@@ -79,7 +81,10 @@ Router.post("/AddStudent",async (req,res)=>{
 
 Router.post("/AddCourse", async (req,res)=>{
     const Course = new CourseModel({
-        CourseName:req.body.CourseName
+        CourseName:req.body.CourseName,
+        Batch:req.body.Batch,
+        Year:req.body.Year,
+        Degree:req.body.Degree
     })
 
     try{
@@ -106,13 +111,49 @@ Router.post("/AddBatches", async (req,res)=>{
 })
 
 Router.post("/Batches/AddCourse",async (req,res)=>{
-    const CourseName = req.body.CourseName
-    
-    // BatchModel.findOneAndUpdate({
-        
-    // })
+    try{
+        const batch = await BatchModel.findOneAndUpdate({
+            Year:req.body.Year,
+            Batch:req.body.Batch,
+            Degree:req.body.Degree
+        },{
+            $addToSet:{
+                Courses:req.body.CourseName
+            }
+        })
 
+        const Course = new CourseModel({
+            CourseName:req.body.CourseName,
+            Batch:req.body.Batch,
+            Year:req.body.Year,
+            Degree:req.body.Degree
+        })
+
+        const crs = await Course.save()
+        res.status(200).json(crs)
+    }catch(err){
+        res.status(500).json(err)
+    }
+        
 })
 
-module.exports = Router
+Router.post("/AddPayments",async (req,res)=>{
+    StudentModel.findOneAndUpdate({
+        Email:req.body.Email
+    },{
+        $set:{
+            TotalTuition:req.body.TotalTuition,
+            AdditionalCharges:req.body.AdditionalCharges
+        }        
+    },{
+        multi:true,
+        new:true
+    }).then(resp=>{
+        res.status(200).json(resp)
+    }).catch(err=>{
+        res.status(500).json(err)
+    })
+})
+    
+    module.exports = Router
 

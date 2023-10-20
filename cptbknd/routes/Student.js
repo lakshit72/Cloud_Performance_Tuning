@@ -42,13 +42,11 @@ Router.post("/Login",async (req,res)=>{
 Router.get("/Courses/:id",async (req,res)=>{
     try{
         const usr = await StudentModel.findById(req.params.id)
-        
-        const Batch = await BatchSchema.find({
+        const Batch = await BatchSchema.findOne({
             Year:usr.Year,
             Degree:usr.Degree,
             Batch:usr.Batch
         })
-
         if(!Batch){
             res.status(404).json("no batch found")
         }
@@ -57,6 +55,19 @@ Router.get("/Courses/:id",async (req,res)=>{
 
         res.status(200).json(Courses)
     }catch(err){
+        res.status(500).json(err)
+    }
+})
+
+Router.get("/Payments/:id",async (req,res)=>{
+    try{
+        const usr = await StudentModel.findById(req.params.id)
+        const response = {
+            "TotalTuition":usr.TotalTuition,
+            "AdditionalCharges":usr.AdditionalCharges
+        }
+        res.status(200).json(response)
+    }catch (err){
         res.status(500).json(err)
     }
 })

@@ -5,9 +5,9 @@ const CourseModel = mongoose.Schema({
     Batch:{type:String},
     Year:{type:String},
     Degree:{type:String},
-    Files:[{
-        Path:{type:String}
-    }]
+    Files:[
+        {type:String}
+    ]
 })
 
 module.exports = mongoose.model("Courses",CourseModel)
