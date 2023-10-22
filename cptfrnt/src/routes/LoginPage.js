@@ -13,7 +13,7 @@ const LoginPage = () => {
 
     const navigate = useNavigate()
 
-    const handelClick = () => {
+    const handlClick = () => {
         const request = {
             "Email":UserName,
             "PassWord":PassWord
@@ -53,7 +53,7 @@ const LoginPage = () => {
                             <input type="text" className="textfeilds" placeholder="Email" onChange={(e)=>SetUserName(e.target.value)}></input>
                             <input type="password" className="textfeilds" placeholder="PassWord" onChange={(e)=>SetPassword(e.target.value)}></input>
                         </div>
-                        <button type="button" onClick={handelClick} className="btnClass loginBtn">
+                        <button type="button" onClick={handlClick} className="btnClass loginBtn">
                             Login
                         </button>
                     </div>

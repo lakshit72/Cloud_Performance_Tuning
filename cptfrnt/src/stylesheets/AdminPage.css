@@ -1,5 +1,64 @@
 .formPage{
-    background-color: aqua;
     width: 93%;
     height: 52%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formWrapper{
+    width: 70%;
+    height: 98%;
+    border: 2px solid var(--accentColor);
+    border-radius: 2.2vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+.inpsCont{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    row-gap: 25px;
+}
+.inps{
+    width: 40%;
+    height: 3vh;
+    background-color: var(--secondaryColor);
+    border: none;
+    border-bottom:2px solid var(--primaryColor) ;
+    font-family: "Young Serif";
+    color: var(--primaryColor);
+    padding: 0.2rem;
+    font-family: 2vh;
+}
+.inps:focus{
+    border: none;
+    border-bottom: 2px solid var(--accentColor);
+    outline: none;
+}
+.inps::placeholder{
+    font-size: 2vh;
+}
+
+.subBtn{
+    height: 6vh;
+    width: 30%;
+    background-color: var(--accentColor);
+    border-radius: 2vmin;
+    border: none;
+    font-family: "Young Serif";
+    color: var(--secondaryColor);
+    font-size: 2.5vh;
+    transition: all 0.6s ease;
+    cursor: pointer;
+}
+.subBtn:hover{
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
+    border: 2px solid var(--accentColor);
 }

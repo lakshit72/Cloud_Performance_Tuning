@@ -1,0 +1,58 @@
+.redirectWrapper{
+    width: 100%;
+    background-color: var(--secondaryColor);
+    min-height: 100vh;
+}
+.coursesCont{
+    width: 80%;
+    height: 100%;
+    float: right;
+}
+.contntCont{
+    margin: 2rem 0 0 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.csCont{
+    width: 20%;
+    height: 20vh;
+    border-radius: 2vmin;
+    border: 3px solid var(--accentColor);
+    background-color:rgba(146, 95, 226,0.4);      
+}
+.csTitle{
+    color: var(--primaryColor);
+    font-family: "Young Serif";
+    margin: 1.4rem 1rem;
+    font-size: 2.5vh;
+    font-weight: 800;
+}
+
+.csButton{
+    background-color: var(--accentColor);
+    width: 45%;
+    height: 30%;
+    float: right;
+    border-radius: 10vmin;
+    margin: 0 1rem;
+    font-size: 2.4vh;
+    font-family: "Young Serif";
+    color: var(--secondaryColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.csButton:hover{
+    background-color: rgba(146, 95, 226, 0.6);
+}
+.bnChild{
+    background-color: inherit;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

@@ -3,6 +3,7 @@ const CryptoJs = require("crypto-js")
 const jwt = require("jsonwebtoken")
 const StudentModel = require("../models/StudentModel")
 const BatchSchema = require("../models/Batches")
+const Courses = require("../models/Courses")
 
 Router.post("/Login",async (req,res)=>{
     try{
@@ -47,6 +48,7 @@ Router.get("/Courses/:id",async (req,res)=>{
         })
         if(!Batch){
             res.status(404).json("no batch found")
+            return false
         }
 
         let Courses = Batch.Courses
@@ -54,6 +56,20 @@ Router.get("/Courses/:id",async (req,res)=>{
         res.status(200).json(Courses)
     }catch(err){
         res.status(500).json(err)
+    }
+})
+
+Router.post("/GetCourse",async (req,res)=>{
+    try{
+    const crs = await Courses.findOne({
+        CourseName:req.body.CourseName,
+        Batch:req.body.Batch,
+        Year:req.body.Year,
+        Batch:req.body.Batch
+    })
+    res.status(200).json(crs.Files)
+    }catch(err){
+        res.status(500).json("no course found")
     }
 })
 

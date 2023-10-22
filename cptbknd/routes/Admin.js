@@ -70,8 +70,16 @@ Router.post("/AddStudent",async (req,res)=>{
         AdditionalCharges:req.body.AdditionalCharges?req.body.AdditionalCharges:"0"
     })
 
+    //const btch = await BatchModel.findOne({})
+    const Batch = new BatchModel({
+        Year:req.body.Year,
+        Degree:req.body.Degree,
+        Batch:req.body.Batch
+    })
+
     try{
         const usr = await newStu.save()
+        const bth = await Batch.save()
         res.status(200).json(usr)
     }catch(err){
         console.log(err)
@@ -132,14 +140,14 @@ Router.post("/Batches/AddCourse",async (req,res)=>{
             }
         })
 
-        const Course = new CourseModel({
+        const course = new CourseModel({
             CourseName:req.body.CourseName,
             Batch:req.body.Batch,
             Year:req.body.Year,
             Degree:req.body.Degree
         })
 
-        const crs = await Course.save()
+        const crs = await course.save()
         res.status(200).json(crs)
     }catch(err){
         res.status(500).json(err)

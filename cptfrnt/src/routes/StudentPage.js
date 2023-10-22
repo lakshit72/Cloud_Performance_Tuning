@@ -3,8 +3,8 @@ import SideBar from "../components/SideBar"
 import "../stylesheets/StudentPage.css"
 import img1 from "../assets/images/1.png"
 import {Dashboard, Payment , LibraryBooks, ContactMail} from '@mui/icons-material'
-import { Cookies } from "react-cookie"
-import axios from "axios"
+import { Cookies, useCookies } from "react-cookie"
+import Axios from "axios"
 import { useNavigate } from "react-router-dom"
 
 const StudentPage = () => {
@@ -22,30 +22,20 @@ const StudentPage = () => {
         {
             icon:<Dashboard sx={{fontSize:28}} style={{color:"#f0f0f0"}}/>,
             text:"DashBoard",
-            lnk:""
-        },
-        {
-            icon:<Payment sx={{fontSize:28}} style={{color:"#f0f0f0"}}/>,
-            text:"Payment Info",
-            lnk:""
+            lnk:"/Student"
         },
         {
             icon:<LibraryBooks sx={{fontSize:28}} style={{color:"#f0f0f0"}}/>,
             text:"Courses",
-            lnk:""
-        },{
-            icon:<ContactMail sx={{fontSize:28}} style={{color:"#f0f0f0"}}/>,
-            text:"Student Info.",
-            lnk:""
+            lnk:"/Courses"
         }
         
     ]
 
-    cookie.get("user") !== null??axios.get("http://localhost:5000/Student/Courses/"+cookie.get("user").data._id).then(res=>{
-            setCourses(res.data)
-        }).catch(err=>{
-            console.log(err)
-        })
+    const handleClick = (e) => {
+        cookie.set("crsname",e.target.getAttribute("data-name-type"))
+        navigator("/Course")
+    }
 
     useEffect(()=>{
 
@@ -58,6 +48,12 @@ const StudentPage = () => {
 
         var date = new Date()
         setDate(months[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear())
+
+        Axios.get("http://localhost:5000/Student/Courses/"+cookie.get("user").data._id).then(res=>{
+            setCourses(res.data)
+        }).catch(err=>{
+            console.log(err)
+        })
     },[])
     
 
@@ -114,11 +110,11 @@ const StudentPage = () => {
                             <div className="financeElements">
                                 {Courses.length===0?"No Courses Enrolled":
                                     Courses.map((el,ind)=>{
-                                        if(ind>1){
+                                        if(ind<3){
                                             return(
-                                            <div className="crsCont">
-                                                <div className="payTitle"></div>
-                                                <div className="crsButton"></div>
+                                            <div className="crsCont" key={ind}>
+                                                <div className="crsTitle">{el}</div>
+                                                <div className="crsButton"><button className="btnChild" data-name-type={el} onClick={handleClick}>View</button></div>
                                             </div>
                                         )
                                     }else{

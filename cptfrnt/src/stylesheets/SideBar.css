@@ -4,6 +4,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position:fixed;
+    top: 0; 
+    left: 0;
 }
 
 .sideCont{
@@ -45,6 +48,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: inherit;
+    border: none;
+    outline: none;
     margin: 0.4rem 0;
     cursor: pointer;
 }

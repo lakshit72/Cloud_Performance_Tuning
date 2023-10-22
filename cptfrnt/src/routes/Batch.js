@@ -3,20 +3,19 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../stylesheets/StudentPage.css'
 import '../stylesheets/FacultyPage.css'
-import SideBar from '../components/SideBar'
+import "../stylesheets/RedirectsPage.css"
 import { Difference, FormatListBulleted, School, Logout } from '@mui/icons-material'
-import img1 from '../assets/images/img3.png'
 import Axios from 'axios'
 
-const FacultyPage = () => {
+const Batch = () => {
     const cookie = new Cookies()
     const navigator = useNavigate()
     var [Prf,setPrf] = useState("");
     var [Name,setName] = useState("");
     var [Pos,setPos] = useState("");
-    var [CurDate,setDate] = useState("");
     var [form,setForm] = useState(null);
     const [file,Setfile] = useState(null);
+    const [crs,setcrs] = useState([]);
 
     const sideBarVar = [
         {
@@ -60,8 +59,7 @@ const FacultyPage = () => {
                 frm.append("Year",inps[1].value)
                 frm.append("Degree",inps[2].value)
                 frm.append("CourseName",inps[3].value)
-                frm.append("Type","Content")
-                frm.append("file",document.querySelector(".inpfile").files[0])
+                frm.append("file",file)
                 Axios.post("http://localhost:5000/FileUploads",frm).then(res=>{
                     window.alert("Content Added")
                     inps.forEach(el=>{
@@ -75,26 +73,34 @@ const FacultyPage = () => {
         </form>
     ]
 
-    
+    const hdlClick = (e) => {
+        cookie.set("batch",e.currentTarget.getAttribute("data-name-type"))
+        navigator("/Batch")
+    }
 
     useEffect(()=>{
 
         // Const varibles
-        const months = ["January","Feburary","March","April","May","June","July","August","September","October","November","December"]
         
         setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://localhost:5000/Users/user1/2.png")
         setName(cookie.get("user").data.UserName)
         setPos("Faculty")
 
-        var date = new Date()
-        setDate(months[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear())
+        const req = {
+            "Degree":cookie.get("batch").data.Degree,
+            "CourseName":cookie.get("batch").data.Course,
+            "Year":cookie.get("batch").data.Year,
+            "Batch":cookie.get("batch").data.Batch
+        }
 
-        setForm(Forms[0])
+        Axios.post("http://localhost:5000/Faculty/GetCourse",req).then(res=>{
+            setcrs(res)
+        }).catch(err=>{
+            console.log(err)
+        })
 
     },[])
-
     return(
-        cookie.get("user")?(
         <section className='stdPageWrapper'>
             <section className="sidebarWrapper">
             <div className="sideCont">
@@ -120,7 +126,7 @@ const FacultyPage = () => {
                 </div>
             </div>
         </section>
-            <div className='contentPage'>
+        <div className='contentPage'>
             <div className="userProfile">
                 <div className="profileCont">
                         <div className="profileImg">
@@ -132,28 +138,20 @@ const FacultyPage = () => {
                         </div>
                     </div>
             </div>
-            <div className="userInfoBanner">
-                    <div className="bannerGreet">
-                        <div className="bannerTime">{CurDate}</div>
-                        <div className="bannerName">
-                            Welcome Back, {Name}!
-                        </div>
-                        <div className="bannerPrompt">
-                            Always Stay Updated in Your Student Portal
-                        </div>
-                    </div>
-                    <div className="bannerImg" style={{backgroundImage:`url(${img1})`}}>
-                    </div>
-                </div>
-                <div className='formPage'>
+            <div className="crsTable">
                     {
-                        form
+                        crs.length>0?crs.map(el=>{
+                            return(
+                                <div className="crsContent">
+                                    <div className="crsTitle">{el}</div>
+                                </div>
+                            )
+                        }):"NO Content Available"
                     }
-                </div>
             </div>
-        </section>):navigator("/")
+        </div>
+        </section>
     )
-
 }
 
-export default FacultyPage
+export default Batch

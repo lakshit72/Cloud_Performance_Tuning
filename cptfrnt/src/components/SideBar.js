@@ -9,6 +9,12 @@ const SideBar = ({params}) => {
         navigate("/")
     }
 
+    const hlClick = (e) =>{
+        if(e.currentTarget.getAttribute("data-lnk-type") !== ""){
+            navigate(e.currentTarget.getAttribute("data-lnk-type"))
+        }
+    }
+
     return(
         <section className="sidebarWrapper">
             <div className="sideCont">
@@ -18,14 +24,12 @@ const SideBar = ({params}) => {
                 <div className="sideOptions">
                     
                         {
-                            params.map(el => {
+                            params.map((el,ind) => {
                                 return(
-                                    <>
-                                    <div className="sideOpns">
+                                    <button type="button" onClick={hlClick} className="sideOpns" data-lnk-type={el.lnk} key={ind}>
                                             {el.icon}
                                         <div className="opnsText">{el.text}</div>
-                                    </div>
-                                    </>
+                                    </button>
                                     )
                             })
                         }

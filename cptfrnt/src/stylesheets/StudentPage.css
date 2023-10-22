@@ -4,12 +4,12 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
 }
 
 .contentPage{
     height: 100vh;
-    width: 78%;
+    width: 80%;
 }
 .userProfile{
     width: 100%;
@@ -167,7 +167,42 @@
 }
 
 .crsCont{
-    width: 42%;
+    width: 32%;
+    height: 95%;
+    border-radius: 2vmin;
+    border: 3px solid var(--accentColor);
+    background-color:rgba(146, 95, 226,0.4);      
+}
+.crsTitle{
+    color: var(--primaryColor);
+    font-family: "Young Serif";
+    margin: 1.4rem 1rem;
+    font-size: 2.5vh;
+    font-weight: 800;
+}
+
+.crsButton{
+    background-color: var(--accentColor);
+    width: 55%;
+    height: 25%;
+    float: right;
+    border-radius: 10vmin;
+    margin: 0 1rem;
+    font-size: 2.4vh;
+    font-family: "Young Serif";
+    color: var(--secondaryColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.crsButton:hover{
+    background-color: rgba(146, 95, 226, 0.6);
+}
+.btnChild{
+    background-color: inherit;
     height: 100%;
-    background-color: aqua;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

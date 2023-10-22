@@ -35,7 +35,7 @@ mongoose.connect(process.env.MONGO_URI).then(()=>{
 // Set folder with user content
 routs.use("/Users",express.static("Users"));
 // Set folder with CourseContent
-routs.use("/Content",express.static("Contents"));
+routs.use("/Uploads",express.static("Uploads"));
 
 //Application Routes
 routs.use("/Admin",AdminRout)
@@ -70,7 +70,7 @@ routs.post("/FileUploads",uploadImage.single("file"),async (req,res)=>{
             Degree:req.body.Degree
         },{
             $addToSet:{
-                Files:`${req.file.path}/${req.file.filename}`
+                Files:`${req.file.path}`
             }
         }).then(resp=>{
             res.status(200).json(resp)
@@ -105,7 +105,7 @@ routs.post("/ProfileUploads",uploadfile.single("file"),async (req,res)=>{
             Email:req.body.Email
         },{
             $set:{
-                prfPic:`${req.file.path}/${req.file.filename}`
+                prfPic:`${req.file.path}`
             }
         },{
             new:true
@@ -119,7 +119,7 @@ routs.post("/ProfileUploads",uploadfile.single("file"),async (req,res)=>{
             Email:req.body.Email
         },{
             $set:{
-                prfPic:`${req.file.path}/${req.file.filename}`
+                prfPic:`${req.file.path}`
             }
         },{
             new:true

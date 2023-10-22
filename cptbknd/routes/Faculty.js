@@ -2,6 +2,7 @@ const Router = require("express").Router()
 const CryptoJs = require("crypto-js")
 const jwt = require("jsonwebtoken")
 const FacultyModel = require("../models/FacultyModel")
+const Courses = require("../models/Courses")
 
 Router.post("/Login",async (req,res)=>{
     try{
@@ -36,6 +37,27 @@ Router.post("/Login",async (req,res)=>{
     }
 })
 
+Router.get("/GetBatches/:id",async (req,res)=>{
+    try{
+        const fac = await FacultyModel.findById(req.params.id)
+        res.status(200).json(fac.TeachReq)
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
 
+Router.post("/GetCourse",async (req,res)=>{
+    try{
+        const crs = await Courses.findOne({
+            CourseName:req.body.CourseName,
+            Batch:req.body.Batch,
+            Year:req.body.Year,
+            Degree:req.body.Degree
+        })
+        res.status(200).json(crs.Files)
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
 
 module.exports = Router
