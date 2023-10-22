@@ -10,7 +10,8 @@ const FacultySchema = new mongoose.Schema({
         Degree:{type:String},
         Course:{type:String}
     }],
-    isAdmin:{type:Boolean,required:true}
+    isAdmin:{type:Boolean,required:true},
+    prfPic:{type:String}
 })
 
 module.exports = mongoose.model("Faculty",FacultySchema)

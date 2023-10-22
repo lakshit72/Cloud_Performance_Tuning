@@ -2,7 +2,10 @@ import { useEffect, useState } from "react"
 import SideBar from "../components/SideBar"
 import "../stylesheets/StudentPage.css"
 import img1 from "../assets/images/1.png"
-import {Dashboard, Payment} from '@mui/icons-material'
+import {Dashboard, Payment , LibraryBooks, ContactMail} from '@mui/icons-material'
+import { Cookies } from "react-cookie"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const StudentPage = () => {
     // State Varibles
@@ -10,7 +13,10 @@ const StudentPage = () => {
     var [Name,setName] = useState("");
     var [Pos,setPos] = useState("");
     var [CurDate,setDate] = useState("");
-
+    var [Courses,setCourses] = useState([]);
+    const cookie = new Cookies()
+    const navigator = useNavigate()
+    
     // Variables
     const sideBarVar = [
         {
@@ -22,18 +28,33 @@ const StudentPage = () => {
             icon:<Payment sx={{fontSize:28}} style={{color:"#f0f0f0"}}/>,
             text:"Payment Info",
             lnk:""
+        },
+        {
+            icon:<LibraryBooks sx={{fontSize:28}} style={{color:"#f0f0f0"}}/>,
+            text:"Courses",
+            lnk:""
+        },{
+            icon:<ContactMail sx={{fontSize:28}} style={{color:"#f0f0f0"}}/>,
+            text:"Student Info.",
+            lnk:""
         }
+        
     ]
 
+    cookie.get("user") !== null??axios.get("http://localhost:5000/Student/Courses/"+cookie.get("user").data._id).then(res=>{
+            setCourses(res.data)
+        }).catch(err=>{
+            console.log(err)
+        })
 
     useEffect(()=>{
 
         // Const varibles
         const months = ["January","Feburary","March","April","May","June","July","August","September","October","November","December"]
-
-        setPrf("http://localhost:5000/Users/user1/2.png")
-        setName("Lakshit Joshi")
-        setPos("BTech CSE")
+        
+        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://localhost:5000/Users/user1/2.png")
+        setName(cookie.get("user").data.UserName)
+        setPos(cookie.get("user").data.Degree)
 
         var date = new Date()
         setDate(months[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear())
@@ -41,6 +62,7 @@ const StudentPage = () => {
     
 
     return(
+        cookie.get("user")?(
         <section className="stdPageWrapper">
             <SideBar params={sideBarVar}/>
             <div className="contentPage">
@@ -74,22 +96,37 @@ const StudentPage = () => {
                             <div className="financeTitle">Finances</div>
                             <div className="financeElements">
                                 <div className="financeTotal finCont">
-
+                                    <div className="payTitle">Total Tuition</div>
+                                    <div className="payVal">Rs.{parseInt(cookie.get("user").data.TotalTuition)}</div>
                                 </div>
                                 <div className="financePaid finCont">
-
+                                    <div className="payTitle">Additional Charges</div>
+                                    <div className="payVal">Rs.{parseInt(cookie.get("user").data.AdditionalCharges)}</div>
                                 </div>
                                 <div className="financeLeft finCont">
-
+                                    <div className="payTitle">Total Charges</div>
+                                    <div className="payVal">Rs.{parseInt(cookie.get("user").data.TotalTuition)+parseInt(cookie.get("user").data.AdditionalCharges)}</div>
                                 </div>
                             </div>
                         </div>
                         <div className="financeCont">
                             <div className="financeTitle">Courses</div>
                             <div className="financeElements">
-                                <div className="">
-
-                                </div>
+                                {Courses.length===0?"No Courses Enrolled":
+                                    Courses.map((el,ind)=>{
+                                        if(ind>1){
+                                            return(
+                                            <div className="crsCont">
+                                                <div className="payTitle"></div>
+                                                <div className="crsButton"></div>
+                                            </div>
+                                        )
+                                    }else{
+                                        return true
+                                    }
+                                    })
+                                }
+                                
                             </div>
                         </div>
                     </div>
@@ -99,8 +136,8 @@ const StudentPage = () => {
                     </div>
                 </div>
             </div>
-        </section>
-    )
+        </section>):navigator("/")
+        )
 }
 
 export default StudentPage

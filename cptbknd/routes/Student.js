@@ -6,20 +6,18 @@ const BatchSchema = require("../models/Batches")
 
 Router.post("/Login",async (req,res)=>{
     try{
-
-        const usr = StudentModel.findOne({
+        const usr = await StudentModel.findOne({
             Email:req.body.Email
         })
-        
         if(!usr) {
             res.status(401).json("Invalid Email")
             return false
         }
-        
+
         const hashPass = CryptoJs.AES.decrypt(usr.PassWord,"SecretKey").toString(CryptoJs.enc.Utf8)
-        
+
         if(hashPass !== req.body.PassWord){
-            res.status(400).body("incorrect Password")
+            res.status(400).json("incorrect Password")
             return false
         }
         
@@ -32,7 +30,7 @@ Router.post("/Login",async (req,res)=>{
             expiresIn:"3d"
         })
         
-        res.status(200).json(jwtToken)
+        res.status(200).json(usr)
     }catch(err){
         res.status(500).json(err)
     }

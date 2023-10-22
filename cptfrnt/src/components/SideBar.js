@@ -1,8 +1,14 @@
 import { Logout } from "@mui/icons-material";
 import "../stylesheets/SideBar.css"
 import SchoolIcon from '@mui/icons-material/School';
+import { useNavigate } from "react-router-dom";
 
 const SideBar = ({params}) => {
+    const navigate = useNavigate()
+    const logOut = () => {
+        navigate("/")
+    }
+
     return(
         <section className="sidebarWrapper">
             <div className="sideCont">
@@ -24,7 +30,7 @@ const SideBar = ({params}) => {
                             })
                         }
                 </div>
-                <div className="sideLogout">
+                <div className="sideLogout" onClick={logOut}>
                         <Logout sx={{fontSize:28}} className="opnsIcon"/>
                         <div className="opnsText">LogOut</div>
                 </div>

@@ -9,6 +9,7 @@ const StudentSchema = new mongoose.Schema({
     Year:{type:String,required:true},
     TotalTuition:{type:String},
     AdditionalCharges:{type:String},
+    prfPic:{type:String}
 })
 
 module.exports = mongoose.model("Student",StudentSchema)

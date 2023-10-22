@@ -7,7 +7,6 @@ const Router = require("express").Router()
 
 Router.post("/Faculty/AddCourse",async (req,res)=>{
     const email = req.body.Email
-
     FacultyModel.findOneAndUpdate({
         Email:email
     },{
@@ -15,7 +14,8 @@ Router.post("/Faculty/AddCourse",async (req,res)=>{
             "TeachReq":{
                 "Batch":req.body.Batch,
                 "Year":req.body.Year,
-                "Course":req.body.Course
+                "Course":req.body.Course,
+                "Degree":req.body.Degree
             }
         }
     }).then((resp)=>{
@@ -89,6 +89,15 @@ Router.post("/AddCourse", async (req,res)=>{
 
     try{
         const crs = await Course.save()
+        const batch = await BatchModel.findOneAndUpdate({
+            Year:req.body.Year,
+            Batch:req.body.Batch,
+            Degree:req.body.Degree
+        },{
+            $addToSet:{
+                Courses:req.body.CourseName
+            }
+        })
         res.status(200).json(crs)
     }catch(err){
         res.status(500).json(err)
@@ -104,6 +113,7 @@ Router.post("/AddBatches", async (req,res)=>{
 
     try{
         const bth = await Batch.save()
+        
         res.status(200).json(bth)
     }catch(err){
         res.status(500).json(err)
