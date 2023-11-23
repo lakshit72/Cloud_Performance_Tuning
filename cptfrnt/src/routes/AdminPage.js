@@ -59,7 +59,7 @@ const AdminPage = () => {
                     "UserName":inps[1].value,
                     "isAdmin":false
                 }
-                Axios.post("http://localhost:5000/Admin/AddFaculty",req).then(res=>{
+                Axios.post("http://98.70.25.141/Admin/AddFaculty",req).then(res=>{
                     window.alert("Faculty Added")
                     inps.forEach(el=>{
                         el.value=""
@@ -93,7 +93,7 @@ const AdminPage = () => {
                 "TotalTuition":inps[5].value,
                 "AdditionalCharges":inps[6].value
             }
-            Axios.post("http://localhost:5000/Admin/AddStudent",req).then(res=>{
+            Axios.post("http://98.70.25.141/Admin/AddStudent",req).then(res=>{
                 window.alert("Student Added")
                 inps.forEach(el=>{
                     el.value=""
@@ -117,7 +117,7 @@ const AdminPage = () => {
             "Batch":inps[2].value,
             "Degree":inps[1].value
         }
-        Axios.post("http://localhost:5000/Admin/AddBatches",req).then(res=>{
+        Axios.post("http://98.70.25.141/Admin/AddBatches",req).then(res=>{
             window.alert("Batch Added")
             inps.forEach(el=>{
                 el.value=""
@@ -144,7 +144,7 @@ const AdminPage = () => {
         "CourseName":inps[3].value
     }
 
-    Axios.post("http://localhost:5000/Admin/Batches/AddCourse",req).then(res=>{
+    Axios.post("http://98.70.25.141/Admin/Batches/AddCourse",req).then(res=>{
         window.alert("Course Added")
         inps.forEach(el=>{
             el.value=""
@@ -172,7 +172,7 @@ const AdminPage = () => {
         "Degree":inps[3].value,
         "Course":inps[4].value
     }
-    Axios.post("http://localhost:5000/Admin/Faculty/AddCourse",req).then(res=>{
+    Axios.post("http://98.70.25.141/Admin/Faculty/AddCourse",req).then(res=>{
         window.alert("Course Added")
         inps.forEach(el=>{
             el.value=""
@@ -200,7 +200,7 @@ const AdminPage = () => {
         // Const varibles
         const months = ["January","Feburary","March","April","May","June","July","August","September","October","November","December"]
         
-        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://localhost:5000/Users/user1/2.png")
+        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://98.70.25.141/Users/user1/2.png")
         setName(cookie.get("user").data.UserName)
         setPos("Admin")
 

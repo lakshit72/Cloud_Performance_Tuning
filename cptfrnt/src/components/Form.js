@@ -12,7 +12,7 @@ const Form = () => {
         frm.append("CourseName","Mathematics")
         frm.append("Type","Content")
         frm.append("file",file)
-        Axios.post("http://localhost:5000/FileUploads",frm).then(res=>{
+        Axios.post("http://98.70.25.141/FileUploads",frm).then(res=>{
             console.log(res)
         }).catch(err=>{
             console.log(err)

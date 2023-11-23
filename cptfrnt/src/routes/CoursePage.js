@@ -32,7 +32,7 @@ const CoursePage = () =>{
 
     useEffect(()=>{
  
-        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://localhost:5000/Users/user1/2.png")
+        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://98.70.25.141/Users/user1/2.png")
         setName(cookie.get("user").data.UserName)
         setPos(cookie.get("user").data.Degree)
  
@@ -43,7 +43,7 @@ const CoursePage = () =>{
             "Batch":cookie.get("user").data.Batch
         }
 
-        Axios.post("http://localhost:5000/Student/GetCourse",req).then(res=>{
+        Axios.post("http://98.70.25.141/Student/GetCourse",req).then(res=>{
             console.log(res)
             Setcrs(res.data)
         }).catch(err=>{
@@ -72,7 +72,7 @@ const CoursePage = () =>{
                         crs.length>0?crs.map(el=>{
                             return(
                                 <div className="crsContent">
-                                    <a className="crsTitle" target="_blank" href={`http://localhost:5000/${el}`}>{el}</a>
+                                    <a className="crsTitle" target="_blank" href={`http://98.70.25.141/${el}`}>{el}</a>
                                 </div>
                             )
                         }):"NO Content Available"

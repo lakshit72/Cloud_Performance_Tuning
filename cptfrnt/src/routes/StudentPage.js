@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import SideBar from "../components/SideBar"
 import "../stylesheets/StudentPage.css"
 import img1 from "../assets/images/1.png"
-import {Dashboard, Payment , LibraryBooks, ContactMail} from '@mui/icons-material'
-import { Cookies, useCookies } from "react-cookie"
+import {Dashboard , LibraryBooks} from '@mui/icons-material'
+import { Cookies } from "react-cookie"
 import Axios from "axios"
 import { useNavigate } from "react-router-dom"
 
@@ -42,14 +42,14 @@ const StudentPage = () => {
         // Const varibles
         const months = ["January","Feburary","March","April","May","June","July","August","September","October","November","December"]
         
-        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://localhost:5000/Users/user1/2.png")
+        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://98.70.25.141/Users/user1/2.png")
         setName(cookie.get("user").data.UserName)
         setPos(cookie.get("user").data.Degree)
 
         var date = new Date()
         setDate(months[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear())
 
-        Axios.get("http://localhost:5000/Student/Courses/"+cookie.get("user").data._id).then(res=>{
+        Axios.get("http://98.70.25.141/Student/Courses/"+cookie.get("user").data._id).then(res=>{
             setCourses(res.data)
         }).catch(err=>{
             console.log(err)

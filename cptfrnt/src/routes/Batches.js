@@ -35,7 +35,7 @@ const Batches = () => {
     }
 
     const clkHan = (e) =>{
-        if(e.currentTarget.getAttribute("data-lnk-type") == 0){
+        if(e.currentTarget.getAttribute("data-lnk-type") === 0){
             navigator("/Faculty")
             setForm(Forms[e.currentTarget.getAttribute("data-lnk-type")])
         }else{
@@ -61,7 +61,7 @@ const Batches = () => {
                 frm.append("CourseName",inps[3].value)
                 frm.append("Type","Content")
                 frm.append("file",file)
-                Axios.post("http://localhost:5000/FileUploads",frm).then(res=>{
+                Axios.post("http://98.70.25.141/FileUploads",frm).then(res=>{
                     window.alert("Content Added")
                     inps.forEach(el=>{
                         el.value=""
@@ -83,11 +83,11 @@ const Batches = () => {
 
         // Const varibles
         
-        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://localhost:5000/Users/user1/2.png")
+        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://98.70.25.141/Users/user1/2.png")
         setName(cookie.get("user").data.UserName)
         setPos("Faculty")
 
-        Axios.get("http://localhost:5000/Faculty/GetBatches/"+cookie.get("user").data._id).then(res=>{
+        Axios.get("http://98.70.25.141/Faculty/GetBatches/"+cookie.get("user").data._id).then(res=>{
             setCont(res.data)
             console.log(res.data)
         }).catch(err=>{
