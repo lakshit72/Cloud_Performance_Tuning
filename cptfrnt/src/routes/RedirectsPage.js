@@ -40,13 +40,13 @@ const RedirectsPage = () => {
     useEffect(()=>{
 
             // Const varibles
-            Axios.get("http://98.70.25.141/Student/Courses/"+cookie.get("user").data._id).then(res=>{
+            Axios.get("http://20.219.215.210:1000/Student/Courses/"+cookie.get("user").data._id).then(res=>{
                 setCont(res.data)
                 console.log(cont)
             }).catch(err=>{
                 console.log(err)
             })
-            setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://98.70.25.141/Users/user1/2.png")
+            setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://20.219.215.210:1000/Users/user1/2.png")
             setName(cookie.get("user").data.UserName)
             setPos(cookie.get("user").data.Degree)
         },[])

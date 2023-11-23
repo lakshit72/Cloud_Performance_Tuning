@@ -20,14 +20,14 @@ const LoginPage = () => {
         }
 
         if(UserName.includes("@stumail.com")){
-            Axios.post("http://98.70.25.141/Student/Login",request).then(response => {
+            Axios.post("http://20.219.215.210:1000/Student/Login",request).then(response => {
                 setCookie("user",response)
                 navigate("Student")
             }).catch(err=>{
                 console.log(err)
             })
         }else if(UserName.includes("@facmail.com")){
-            Axios.post("http://98.70.25.141/Faculty/Login",request).then(response => {
+            Axios.post("http://20.219.215.210:1000/Faculty/Login",request).then(response => {
                 setCookie("user",response)
                 if(response.data.isAdmin){
                     navigate("Admin")

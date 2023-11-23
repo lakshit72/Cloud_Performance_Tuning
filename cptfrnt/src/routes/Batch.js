@@ -60,7 +60,7 @@ const Batch = () => {
                 frm.append("Degree",inps[2].value)
                 frm.append("CourseName",inps[3].value)
                 frm.append("file",file)
-                Axios.post("http://98.70.25.141/FileUploads",frm).then(res=>{
+                Axios.post("http://20.219.215.210:1000/FileUploads",frm).then(res=>{
                     window.alert("Content Added")
                     inps.forEach(el=>{
                         el.value=""
@@ -82,7 +82,7 @@ const Batch = () => {
 
         // Const varibles
         
-        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://98.70.25.141/Users/user1/2.png")
+        setPrf(cookie.get("user").data.prfPic?cookie.get("user").data.prfPic:"http://20.219.215.210:1000/Users/user1/2.png")
         setName(cookie.get("user").data.UserName)
         setPos("Faculty")
 
@@ -93,7 +93,7 @@ const Batch = () => {
             "Batch":cookie.get("batch").data.Batch
         }
 
-        Axios.post("http://98.70.25.141/Faculty/GetCourse",req).then(res=>{
+        Axios.post("http://20.219.215.210:1000/Faculty/GetCourse",req).then(res=>{
             setcrs(res)
         }).catch(err=>{
             console.log(err)
